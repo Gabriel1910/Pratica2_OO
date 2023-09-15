@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class CalculadoraInvestimento {
+    private double investimentoInicial;
+    private double taxaMensal;
+    private int numeroMeses;
+
+    public CalculadoraInvestimento(double investimentoInicial, double taxaMensal, int numeroMeses) {
+        this.investimentoInicial = investimentoInicial;
+        this.taxaMensal = taxaMensal;
+        this.numeroMeses = numeroMeses;
+    }
+
+    public void calcularERender() {
+        double rendimentoTotal = investimentoInicial * Math.pow(1 + taxaMensal / 100, numeroMeses) - investimentoInicial;
+        System.out.println("O rendimento total após " + numeroMeses + " meses será de: R$" + rendimentoTotal);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o investimento inicial: R$");
+        double investimentoInicial = scanner.nextDouble();
+
+        System.out.print("Digite a taxa de rendimento mensal (%): ");
+        double taxaMensal = scanner.nextDouble();
+
+        System.out.print("Digite o número de meses: ");
+        int numeroMeses = scanner.nextInt();
+
+        CalculadoraInvestimento calculadora = new CalculadoraInvestimento(investimentoInicial, taxaMensal, numeroMeses);
+        calculadora.calcularERender();
+        scanner.close();
+    }
+}
